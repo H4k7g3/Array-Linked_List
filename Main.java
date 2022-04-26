@@ -87,6 +87,21 @@ public class Main {
 
 
         System.out.println(myLinkedList.remove(5));
+        
+        Stack<Integer> stack = new Stack<Integer>();
+     Scanner input = new Scanner(System.in);
+     String s;
+     System.out.println("Max stack size is 20");
+
+     i = 0;
+     while (input.hasNext()) {
+      s = input.next();
+      if (s.equals("null")){
+       System.out.println(stack.pop()+" ");
+      } else {
+       stack.push(Integer.parseInt(s));
+      }
+     }
 
         }
     }
