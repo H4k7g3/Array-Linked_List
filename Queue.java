@@ -1,40 +1,67 @@
-public class Queue {
+public class Queue<T extends Comparable<T>>{
+    MyLinkedList<T> list;
+    private final int capacity = 7;
 
-    public static final int DEFAULT_SIZE = 5;
-
-    private Object data[];
-
-    private int index;
-
-    public Queue() {
-        data = new Object[DEFAULT_SIZE];
+    public Queue(){
+        list = new MyLinkedList<>();
     }
 
-    public Queue(int size) {
-        data = new Object[size];
-    }
-
-    public boolean isEmpty() {
-        return index == 0;
-    }
-
-    public void enqueue(Object obj) throws Exception {
-        if (index == data.length - 1) {
-            throw new Exception("Queue is full. Dequeue some objects");
+    public boolean add(T item){
+        if (item != null && list.size() != capacity) {
+            list.add(item);
+            return true;
         }
-        this.data[index] = obj;
-        this.index++;
+        return false;
     }
 
-    public Object dequeue() throws Exception {
-        if (isEmpty())
-            throw new Exception("Queue is empty");
-        Object obj = this.data[0];
-        for (int i = 0; i < this.index - 1; i++) {
-            data[i] = data[i + 1];
+    public boolean offer(T item){
+        if (list.size() != capacity && item != null){
+            list.add(item);
+            return true;
         }
-        this.index--;
-        return obj;
-
+        return false;
     }
+
+    public T element(){
+        if (list.size() != 0) {
+            return list.get(0);
+        }
+        else {
+            return null;
+        }
+    }
+
+    public T peek(){
+        if (list.size() != 0)
+            return list.get(0);
+        return null;
+    }
+
+    public T remove(){
+        if (list.size() != 0) {
+            return list.remove(0);
+        }
+        else {
+            return null;
+        }
+    }
+
+    public int size(){
+        return list.size();
+    }
+
+    public T poll() {
+        if (list.size() != 0) {
+            return list.remove(0);
+        }
+        return null;
+    }
+
+    public boolean isEmpty(){
+        return list.size() == 0;
+    }
+
+
+
+
 }
