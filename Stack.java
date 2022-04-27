@@ -1,5 +1,7 @@
-public class Stack<T>{
+public class Stack<T extends Comparable<T>>{
 
+    private MyArrayList<T> list;
+    
     private Node top = null;
 
     class Node{
@@ -16,6 +18,14 @@ public class Stack<T>{
         return item;
     }
 
+    public T top(){
+        if (isEmpty()){
+            return null;
+        }
+        T item = top.item;
+        return item;
+    }
+    
     public void push(T s){
         Node oldtop = top;
         top = new Node();
