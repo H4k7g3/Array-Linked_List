@@ -18,7 +18,7 @@ public class Stack<T extends Comparable<T>>{
         return item;
     }
 
-    public T top(){
+    public T peek(){
         if (isEmpty()){
             return null;
         }
@@ -33,8 +33,8 @@ public class Stack<T extends Comparable<T>>{
         top.next = oldtop;
     }
 
-    public T search(T item){
-        return list.get(list.indexOf(item));
+    public int size(){
+        return list.size();
     }
 
 
